@@ -5,7 +5,9 @@
   "description": "Add colorful conventional comments to merge requests in GitLab.",
   "author": "jorciney.dias@hotmail.com",
   "permissions": [
-    "storage",
-    "<all_urls>"
-  ]
+    "storage"
+  ],
+  "action": {
+    "default_popup": "index.html"
+  }
 }

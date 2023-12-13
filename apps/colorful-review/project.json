@@ -7,7 +7,7 @@
   "tags": ["scope:app", "scope:chrome-extension"],
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
+      "executor": "@angular-builders/custom-webpack:browser",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/colorful-review",
@@ -22,7 +22,15 @@
           "apps/colorful-review/src/manifest.json"
         ],
         "styles": ["apps/colorful-review/src/styles.scss"],
-        "scripts": []
+        "scripts": [],
+        "customWebpackConfig": {
+          "path": "apps/colorful-review/custom-webpack.config.ts"
+        },
+        "optimization": {
+          "styles": {
+            "inlineCritical": false
+          }
+        }
       },
       "configurations": {
         "production": {

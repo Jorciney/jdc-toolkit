@@ -2,9 +2,9 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
-    "types": []
+    "types": ["chrome"]
   },
   "files": ["src/main.ts"],
-  "include": ["src/**/*.d.ts", "src/manifest.json"],
+  "include": ["src/**/*.d.ts", "src/manifest.json", "src/background.ts"],
   "exclude": ["jest.config.ts", "src/**/*.test.ts", "src/**/*.spec.ts"]
 }
