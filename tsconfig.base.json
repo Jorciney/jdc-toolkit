@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@jdc-toolkit/gitlab-improved-mr-comments": [
+        "libs/chrome-extensions/gitlab-improved-mr-comments/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
