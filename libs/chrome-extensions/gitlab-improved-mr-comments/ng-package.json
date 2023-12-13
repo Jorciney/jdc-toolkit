@@ -3,5 +3,13 @@
   "dest": "../../../dist/libs/chrome-extensions/gitlab-improved-mr-comments",
   "lib": {
     "entryFile": "src/index.ts"
-  }
+  },
+  "assets": [
+    "src/manifest.json",
+    {
+      "glob": "**/*",
+      "input": "/src/assets",
+      "output": "/assets"
+    }
+  ]
 }
