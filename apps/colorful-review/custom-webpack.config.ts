@@ -1,5 +1,5 @@
 import type { Configuration } from 'webpack';
 
 module.exports = {
-  entry: { background: 'apps/colorful-review/src/background.ts' },
+  entry: { background: { import: 'apps/colorful-review/src/background.ts', runtime: false } }
 } as Configuration;
