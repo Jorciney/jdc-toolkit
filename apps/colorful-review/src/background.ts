@@ -1,3 +1,4 @@
+const baseUrl = 'https://github.com';
 chrome.runtime.onInstalled.addListener(() => {
   chrome.webNavigation.onCompleted.addListener(() => {
     chrome.tabs.query({ active: true, currentWindow: true }, ([{ id }]) => {
@@ -5,5 +6,28 @@ chrome.runtime.onInstalled.addListener(() => {
         chrome.action.disable(id);
       }
     });
-  }, { url: [{ hostContains: 'https://github.com' }] });
+  }, { url: [{ hostContains: baseUrl }] });
 });
+
+chrome.webNavigation.onCompleted.addListener(function(details) {
+  if (details.url.includes("github")) {
+    chrome.scripting.executeScript({
+      target: { tabId: details.tabId },
+      files: [
+        'main.js'
+      ]
+    });
+    chrome.scripting.executeScript({
+      target: { tabId: details.tabId },
+      func: updateBackgroundColor,
+      args: ['orange']
+    });
+  }
+});
+const updateBackgroundColor = (color: string) => {
+  let elementById = document.getElementById('user-profile-frame');
+  console.log('FROM BACKGROUND:', elementById);
+  if (elementById) {
+    elementById.style.background = color;
+  }
+};

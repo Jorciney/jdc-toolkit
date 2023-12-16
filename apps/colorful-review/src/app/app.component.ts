@@ -30,8 +30,6 @@ export class AppComponent implements OnInit {
         args: ['green']
       });
     });
-
-
   }
 
  updateColor() {
