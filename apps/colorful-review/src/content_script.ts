@@ -36,9 +36,6 @@ function addDropDownToPage(selector: string, node?: Node) {
   let nodeList = node?.parentElement?.querySelectorAll(selector) || document.querySelectorAll(selector);
   nodeList.forEach(element => {
     console.log('FROM CONTENT:', element);
-    if (element) {
-      (element as HTMLElement).style.background = 'pink';
-    }
     if (!element?.querySelector('#colorful-review-dropdown')) {
       let dropdown = document.createElement('select');
       dropdown.id = 'colorful-review-dropdown';
