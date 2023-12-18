@@ -11,10 +11,10 @@
     "tabs",
     "webNavigation"
   ],
-  "background": {
-    "service_worker": "background.js",
-    "type": "module"
-  },
+//  "background": {
+//    "service_worker": "background.js",
+//    "type": "module"
+//  },
   "action": {
     "default_popup": "index.html"
   },
