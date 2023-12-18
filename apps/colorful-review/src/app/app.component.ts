@@ -37,7 +37,7 @@ export class AppComponent implements OnInit {
  }
 }
 const updateBackgroundColor = (color: string) => {
-  let elementById = document.getElementById('user-profile-frame');
+  const elementById = document.getElementById('user-profile-frame');
   console.log('elemenetFound:', elementById);
   if (elementById) {
     elementById.style.background = color;

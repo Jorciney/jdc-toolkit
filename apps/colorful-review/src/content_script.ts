@@ -10,7 +10,7 @@ const observer = new MutationObserver((mutations) => {
   mutations.forEach((mutation) => {
     if (mutation.type === 'childList' && mutation.addedNodes.length) {
       mutation.addedNodes.forEach((node) => {
-        if ((node as any)?.classList?.contains('js-temp-notes-holder')) {
+        if ((node as Element)?.classList?.contains('js-temp-notes-holder')) {
           addDropDownToPage('div.md-header-toolbar', node);
         }
       });
@@ -40,7 +40,12 @@ function addDropDownToPage(selector: string, node?: Node) {
 
       styleDropdown(dropdown);
       Object.keys(conventionalComments).map((key) => {
-        const option = createDropDownOption((conventionalComments as any)[key], key);
+        const option = createDropDownOption((conventionalComments as {
+          [key: string]: {
+            description: string,
+            innerText: string
+          }
+        })[key], key);
         dropdown.appendChild(option);
       });
 
