@@ -8,7 +8,6 @@ import { conventionalComments } from './conventional-comments';
 // });
 const observer = new MutationObserver((mutations) => {
   mutations.forEach((mutation) => {
-    console.log('mutation:', mutation);
     if (mutation.type === 'childList' && mutation.addedNodes.length) {
       mutation.addedNodes.forEach((node) => {
         if ((node as any)?.classList?.contains('js-temp-notes-holder')) {
@@ -35,17 +34,16 @@ if (!window.location.href.includes('diff')) {
 function addDropDownToPage(selector: string, node?: Node) {
   let nodeList = node?.parentElement?.querySelectorAll(selector) || document.querySelectorAll(selector);
   nodeList.forEach(element => {
-    console.log('FROM CONTENT:', element);
     if (!element?.querySelector('#colorful-review-dropdown')) {
       let dropdown = document.createElement('select');
       dropdown.id = 'colorful-review-dropdown';
-      console.log('dropdown', dropdown);
 
       styleDropdown(dropdown);
       Object.keys(conventionalComments).map((key) => {
         const option = createDropDownOption((conventionalComments as any)[key], key);
         dropdown.appendChild(option);
       });
+
       dropdown.addEventListener('change', handleDropdownSelection.bind(null, dropdown, element));
 
       element?.prepend(dropdown);

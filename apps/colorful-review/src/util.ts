@@ -11,7 +11,6 @@ export const createDropDownOption = (value: {
 
 export const handleDropdownSelection = (eventDropdown: any, nodeElement: Element, sup: any): void => {
   const selectedValue = eventDropdown?.value;
-  console.log('Selected option:', selectedValue, eventDropdown, sup, nodeElement);
   // TODO make this more generic and query parent elements until it finds the textarea
   const textArea = nodeElement.parentElement?.parentElement?.parentElement?.querySelector('#note-body') as HTMLTextAreaElement || nodeElement.parentElement?.parentElement?.parentElement?.querySelector('#note_note') as HTMLTextAreaElement;
   const textArray = textArea?.value?.split('\`$') || [];
@@ -21,4 +20,6 @@ export const handleDropdownSelection = (eventDropdown: any, nodeElement: Element
     textArray.unshift(selectedValue);
   }
   textArea.value = textArray?.join('');
+  textArea.focus();
+  textArea.click();
 };

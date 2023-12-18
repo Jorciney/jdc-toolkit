@@ -13,7 +13,6 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     chrome.tabs.onUpdated.addListener( function (tabId, changeInfo, tab) {
       if (changeInfo.status === 'complete' && tab.active) {
-        console.log('id:', tabId);
 
         chrome.scripting?.executeScript({
           target: { tabId: tabId! },
