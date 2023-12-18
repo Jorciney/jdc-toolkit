@@ -4,11 +4,11 @@ export const conventionalComments = {
     "description": "Select an option"
   },
   "Praise": {
-    "innerText": "$`\\colorbox{#00BD68}{\\textcolor{#FFFFFF}{\\textsf{Praise:}}}`$",
+    "innerText": "$`\\colorbox{#02B532}{\\textcolor{#FFFFFF}{\\textsf{Praise:}}}`$",
     "description": "Praises highlight something positive. Try to leave at least one of these comments per review. Do not leave false praise (which can actually be damaging). Do look for something to sincerely praise."
   },
   "Nitpick": {
-    "innerText": "$`\\colorbox{#C8E8E0}{\\textcolor{#FFFFFF}{\\textsf{Nitpick}}}`$",
+    "innerText": "$`\\colorbox{#C8E8E0}{\\textcolor{#FFFFFF}{\\textsf{Nitpick:}}}`$",
     "description": "Nitpicks are trivial preference-based requests. These should be non-blocking by nature."
   },
   "Suggestion": {
@@ -20,11 +20,11 @@ export const conventionalComments = {
     "description": "Issues highlight specific problems with the subject under review. These problems can be user-facing or behind the scenes. It is strongly recommended to pair this comment with a suggestion. If you are not sure if a problem exists or not, consider leaving a question."
   },
   "Todo": {
-    "innerText": "$`\\colorbox{#2919E0}{\\textcolor{#FFFFFF}{\\textsf{Todo:}}}`$",
+    "innerText": "$`\\colorbox{#0e739e}{\\textcolor{#FFFFFF}{\\textsf{Todo:}}}`$",
     "description": "TODO's are small, trivial, but necessary changes. Distinguishing todo comments from issues: or suggestions: helps direct the reader's attention to comments requiring more involvement."
   },
   "Question": {
-    "innerText": "$`\\colorbox{#F0ADEB}{\\textcolor{#FFFFFF}{\\textsf{Question}}}`$",
+    "innerText": "$`\\colorbox{#9E0E4A}{\\textcolor{#FFFFFF}{\\textsf{Question:}}}`$",
     "description": "Questions are appropriate if you have a potential concern but are not quite sure if it's relevant or not. Asking the author for clarification or investigation can lead to a quick resolution."
   },
   "Thought": {
@@ -36,7 +36,7 @@ export const conventionalComments = {
     "description": "Chores are simple tasks that must be done before the subject can be “officially” accepted. Usually, these comments reference some common process. Try to leave a link to the process description so that the reader knows how to resolve the chore."
   },
   "Note": {
-    "innerText": "$`\\colorbox{yellow}{\\textcolor{#FFFFFF}{\\textsf{Note:}}}`$",
+    "innerText": "$`\\colorbox{#594917}{\\textcolor{#FFFFFF}{\\textsf{Note:}}}`$",
     "description": "Notes are always non-blocking and simply highlight something the reader should take note of."
   },
   "Non-blocking": {

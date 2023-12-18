@@ -25,7 +25,7 @@ chrome.webNavigation.onCompleted.addListener(function(details) {
   }
 });
 const updateBackgroundColor = (color: string) => {
-  let elementById = document.getElementById('user-profile-frame');
+  const elementById = document.getElementById('user-profile-frame');
   console.log('FROM BACKGROUND:', elementById);
   if (elementById) {
     elementById.style.background = color;

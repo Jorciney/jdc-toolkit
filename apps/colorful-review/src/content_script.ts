@@ -32,10 +32,10 @@ if (!window.location.href.includes('diff')) {
 }
 
 function addDropDownToPage(selector: string, node?: Node) {
-  let nodeList = node?.parentElement?.querySelectorAll(selector) || document.querySelectorAll(selector);
+  const nodeList = node?.parentElement?.querySelectorAll(selector) || document.querySelectorAll(selector);
   nodeList.forEach(element => {
     if (!element?.querySelector('#colorful-review-dropdown')) {
-      let dropdown = document.createElement('select');
+      const dropdown = document.createElement('select');
       dropdown.id = 'colorful-review-dropdown';
 
       styleDropdown(dropdown);
