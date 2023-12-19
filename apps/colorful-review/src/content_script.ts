@@ -28,28 +28,40 @@ const appendObserver = () => {
 
 appendObserver();
 if (!window.location.href.includes('diff')) {
-  addDropDownToPage('.md-header-toolbar.gl-display-flex.gl-py-3.gl-flex-wrap.gl-row-gap-3');
+  addDropDownToPage(
+    '.md-header-toolbar.gl-display-flex.gl-py-3.gl-flex-wrap.gl-row-gap-3'
+  );
 }
 
 function addDropDownToPage(selector: string, node?: Node) {
-  const nodeList = node?.parentElement?.querySelectorAll(selector) || document.querySelectorAll(selector);
-  nodeList.forEach(element => {
+  const nodeList =
+    node?.parentElement?.querySelectorAll(selector) ||
+    document.querySelectorAll(selector);
+  nodeList.forEach((element) => {
     if (!element?.querySelector('#colorful-review-dropdown')) {
       const dropdown = document.createElement('select');
       dropdown.id = 'colorful-review-dropdown';
 
       styleDropdown(dropdown);
       Object.keys(conventionalComments).map((key) => {
-        const option = createDropDownOption((conventionalComments as {
-          [key: string]: {
-            description: string,
-            innerText: string
-          }
-        })[key], key);
+        const option = createDropDownOption(
+          (
+            conventionalComments as {
+              [key: string]: {
+                description: string;
+                innerText: string;
+              };
+            }
+          )[key],
+          key
+        );
         dropdown.appendChild(option);
       });
 
-      dropdown.addEventListener('change', handleDropdownSelection.bind(null, dropdown, element));
+      dropdown.addEventListener(
+        'change',
+        handleDropdownSelection.bind(null, dropdown, element)
+      );
 
       element?.prepend(dropdown);
     }

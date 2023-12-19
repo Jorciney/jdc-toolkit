@@ -5,16 +5,11 @@
   "description": "Add colorful conventional comments to merge requests in GitLab.",
   "author": "jorciney.dias@hotmail.com",
   "host_permissions": ["<all_urls>"],
-  "permissions": [
-    "activeTab",
-    "scripting",
-    "tabs",
-    "webNavigation"
-  ],
-//  "background": {
-//    "service_worker": "background.js",
-//    "type": "module"
-//  },
+  "permissions": ["activeTab", "scripting", "tabs", "webNavigation"],
+  //  "background": {
+  //    "service_worker": "background.js",
+  //    "type": "module"
+  //  },
   "action": {
     "default_popup": "index.html"
   },
@@ -28,14 +23,12 @@
         "*://*.gitlab.org/merge_requests*",
         "*://*.gitlab.net/merge_requests*"
       ],
-      "js": [
-        "content_script.js"
-      ]
+      "js": ["content_script.js"]
     }
   ],
   "web_accessible_resources": [
     {
-      "resources": [ "index.html" ],
+      "resources": ["index.html"],
       "matches": ["https://github.com/*"],
       "use_dynamic_url": true
     }
