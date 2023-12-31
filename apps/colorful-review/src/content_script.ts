@@ -1,5 +1,5 @@
 import { createDropDownOption, handleDropdownSelection } from './util';
-import { styleDropdown } from './stylesUtil';
+import { styleDropdown } from './styles-util';
 import { conventionalComments } from './conventional-comments';
 
 //   document.('textarea')?.addEventListener('change', () => {
