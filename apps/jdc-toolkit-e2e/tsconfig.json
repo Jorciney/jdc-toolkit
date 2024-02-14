@@ -1,0 +1,24 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "module": "ES2022",
+    "target": "ES2022",
+    "lib": ["ES2022", "dom"],
+    "sourceMap": true,
+    "inlineSourceMap": true,
+    "outDir": "../../dist/out-tsc",
+    "allowJs": true,
+    "types": ["cypress", "node"],
+    "allowSyntheticDefaultImports": true
+  },
+  "include": [
+    "../../libs/**/*.ts",
+    "../../libs/**/*.js",
+    "../../apps/**/*.js",
+    "../../apps/**/*.ts",
+    "src/**/*.ts",
+    "cypress/**/*.ts",
+    "src/**/*.js",
+    "cypress.config.ts"
+  ]
+}

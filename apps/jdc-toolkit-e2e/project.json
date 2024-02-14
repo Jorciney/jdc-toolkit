@@ -14,6 +14,15 @@
     "lint": {
       "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"]
+    },
+    "e2e-cypress": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/jdc-toolkit-e2e/cypress.config.ts",
+        "tsConfig": "apps/jdc-toolkit-e2e/tsconfig.json",
+        "testingType": "e2e",
+        "devServerTarget": "jdc-toolkit:serve:development"
+      }
     }
   },
   "implicitDependencies": ["jdc-toolkit"]

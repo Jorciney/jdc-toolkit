@@ -1,0 +1,15 @@
+{
+    "extends": "@istanbuljs/nyc-config-typescript",
+    "all": true,
+    "compact": false,
+    "merge": true,
+    "reporter": [
+      "json",
+      "html-spa",
+      "text"
+    ],
+    "include": [
+    "./**"],
+    "report-dir": "../../coverage/jdc-toolkit",
+    "cwd": "../../"
+}
