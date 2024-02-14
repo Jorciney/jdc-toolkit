@@ -6,6 +6,8 @@ tmp
 /out-tsc
 coverage
 apps/**/coverage
+apps/**/.nyc_output
+.nyc_output
 # dependencies
 node_modules
 
