@@ -11,7 +11,7 @@ export const conventionalComments = {
   },
   Nitpick: {
     innerText:
-      '$`\\colorbox{#C8E8E0}{\\textcolor{#FFFFFF}{\\textsf{Nitpick:}}}`$',
+      '$`\\colorbox{#866CA6}{\\textcolor{#FFFFFF}{\\textsf{Nitpick:}}}`$',
     description:
       'Nitpicks are trivial preference-based requests. These should be non-blocking by nature.',
   },
@@ -27,6 +27,12 @@ export const conventionalComments = {
     description:
       'Issues highlight specific problems with the subject under review. These problems can be user-facing or behind the scenes. It is strongly recommended to pair this comment with a suggestion. If you are not sure if a problem exists or not, consider leaving a question.',
   },
+  Improvement: {
+    innerText:
+      '$`\\colorbox{#0078FF}{\\textcolor{#FFFFFF}{\\textsf{Improvement:}}}`$',
+    description:
+      'Not a problem, but a potential improvement. This is a great way to suggest a better way of doing something. It is strongly recommended to pair this comment with a suggestion.',
+  },
   Todo: {
     innerText: '$`\\colorbox{#0e739e}{\\textcolor{#FFFFFF}{\\textsf{Todo:}}}`$',
     description:
@@ -40,7 +46,7 @@ export const conventionalComments = {
   },
   Thought: {
     innerText:
-      '$`\\colorbox{#ADE9F0}{\\textcolor{#FFFFFF}{\\textsf{Thought:}}}`$',
+      '$`\\colorbox{#FDA14A}{\\textcolor{#FFFFFF}{\\textsf{Thought:}}}`$',
     description:
       'Thoughts represent an idea that popped up from reviewing. These comments are non-blocking by nature, but they are extremely valuable and can lead to more focused initiatives and mentoring opportunities.',
   },
