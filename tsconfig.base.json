@@ -18,6 +18,9 @@
       "@jdc-toolkit/gitlab-improved-mr-comments": [
         "libs/chrome-extensions/gitlab-improved-mr-comments/src/index.ts"
       ],
+      "@jdc-toolkit/package-lock-analyzer": [
+        "libs/package-lock-analyzer/src/index.ts"
+      ],
       "@stencil-ng-wrapper": ["libs/stencil-ng-wrapper/src/index.ts"]
     }
   },
