@@ -1,12 +1,16 @@
 {
   "name": "@jdc-toolkit/package-lock-analyzer",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "main": "dist/package-lock-analyzer/src/lib/main.js",
+  "bin": {
+    "package-lock-analyzer-view": "./dist/package-lock-analyzer/src/lib/main.js"
+  },
   "peerDependencies": {
     "@angular/common": "^17.3.0",
-    "@angular/core": "^17.3.0"
+    "@angular/core": "^17.3.0",
+    "open": "^8.4.0",
+    "@types/node": "^20.12.5"
   },
-  "dependencies": {
-    "tslib": "^2.3.0"
-  },
-  "sideEffects": false
+  "sideEffects": false,
+  "license": "MIT"
 }

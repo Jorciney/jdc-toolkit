@@ -22,6 +22,22 @@
       },
       "defaultConfiguration": "production"
     },
+    "node-serve": {
+      "executor": "@nx/js:node",
+      "options": {
+        "buildTarget": "node-build"
+      }
+    },
+    "node-build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "{projectRoot}/dist/package-lock-analyzer",
+        "main": "{projectRoot}/src/lib/main.ts",
+        "tsConfig": "{projectRoot}/tsconfig.lib.json",
+        "assets": ["{projectRoot}/package.json"]
+      }
+    },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
