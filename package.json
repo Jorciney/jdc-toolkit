@@ -30,7 +30,7 @@
     "@angular/cli": "17.3.9",
     "@angular/compiler-cli": "17.3.3",
     "@angular/language-service": "17.3.3",
-    "@cypress/code-coverage": "3.12.17",
+    "@cypress/code-coverage": "3.13.4",
     "@istanbuljs/nyc-config-typescript": "1.0.2",
     "@jsdevtools/coverage-istanbul-loader": "3.0.5",
     "@nx/cypress": "18.2.3",
