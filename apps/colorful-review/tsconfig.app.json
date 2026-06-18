@@ -8,7 +8,6 @@
   "include": [
     "src/**/*.d.ts",
     "src/manifest.json",
-    "src/background.ts",
     "src/content_script.ts"
   ],
   "exclude": ["jest.config.ts", "src/**/*.test.ts", "src/**/*.spec.ts"]
