@@ -1,20 +1,28 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { RouterTestingModule } from '@angular/router/testing';
+import { conventionalCommentsLegend } from '../conventional-comments';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppComponent, RouterTestingModule],
+      imports: [AppComponent],
     }).compileComponents();
   });
 
-  it('should render title', () => {
+  it('renders the legend title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('h1')?.textContent).toContain(
-      'Welcome colorful-review'
+      'Conventional Comments'
     );
+  });
+
+  it('renders one badge per legend entry', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    const badges = compiled.querySelectorAll('.legend__badge');
+    expect(badges.length).toBe(conventionalCommentsLegend.length);
   });
 });
