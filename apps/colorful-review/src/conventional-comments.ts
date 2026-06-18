@@ -79,3 +79,22 @@ export const conventionalComments = {
       'This decoration gives some freedom to the author that they should resolve the comment only if the changes ends up being minor or trivial.',
   },
 };
+
+export interface LegendEntry {
+  key: string;
+  color: string;
+  description: string;
+}
+
+const COLORBOX_RE = /\\colorbox\{([^}]+)\}/;
+
+export const conventionalCommentsLegend: LegendEntry[] = Object.entries(
+  conventionalComments
+)
+  .map(([key, value]) => {
+    const match = value.innerText.match(COLORBOX_RE);
+    return match
+      ? { key, color: match[1], description: value.description }
+      : null;
+  })
+  .filter((entry): entry is LegendEntry => entry !== null);

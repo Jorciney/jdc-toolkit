@@ -1,0 +1,44 @@
+:host {
+  display: block;
+  width: 360px;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.legend {
+  padding: 12px;
+}
+
+.legend__title {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+.legend__list {
+  margin: 0;
+  padding: 0;
+  max-height: 480px;
+  overflow-y: auto;
+  list-style: none;
+}
+
+.legend__item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 6px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.legend__badge {
+  align-self: flex-start;
+  padding: 1px 6px;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.legend__description {
+  font-size: 0.75rem;
+  color: #333;
+}
