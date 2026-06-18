@@ -52,7 +52,7 @@
   
   "web_accessible_resources": [
     {
-      "resources": ["icons/*", "context/*"],
+      "resources": ["icons/*"],
       "matches": ["<all_urls>"]
     }
   ]
