@@ -49,7 +49,7 @@ class BackgroundController {
     // Set default settings
     chrome.storage.sync.set({
       reviewSettings: {
-        model: 'claude-opus-4-20250514',
+        model: 'claude-opus-4-8',
         maxFiles: 10,
         includeTests: true,
         projectContext: {
@@ -548,7 +548,7 @@ class BackgroundController {
       const { apiKey, model, prompt, maxTokens } = message;
       
       const requestBody = {
-        model: model || 'claude-3-sonnet-20240229',
+        model: model || 'claude-opus-4-8',
         max_tokens: maxTokens || 1000,
         messages: [
           {

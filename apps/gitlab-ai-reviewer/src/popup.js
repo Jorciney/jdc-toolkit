@@ -156,7 +156,7 @@ class PopupController {
     
     // Use defaults only if no settings exist at all
     const defaults = {
-      model: 'claude-opus-4-20250514',
+      model: 'claude-opus-4-8',
       maxFiles: 10,
       includeTests: true,
       projectContext: {
@@ -378,7 +378,7 @@ class PopupController {
 
       // Get settings
       const settings = {
-        model: 'claude-3-sonnet-20240229',
+        model: 'claude-opus-4-8',
         maxFiles: 10,
         includeTests: true,
         deepAnalysis: true
@@ -547,7 +547,7 @@ class PopupController {
         data: {
           apiKey: apiKey,
           body: {
-            model: 'claude-3-haiku-20240307', // Use fastest model for testing
+            model: 'claude-haiku-4-5', // Use fastest model for testing
             max_tokens: 10,
             messages: [{
               role: 'user',
@@ -804,7 +804,7 @@ class PopupController {
         data: {
           apiKey: apiKey,
           body: {
-            model: 'claude-3-haiku-20240307',
+            model: 'claude-haiku-4-5',
             max_tokens: 10,
             messages: [{
               role: 'user',
@@ -989,7 +989,7 @@ class PopupController {
     console.log('🔍 Using API key:', apiKey.substring(0, 15) + '...');
     try {
       const requestBody = {
-        model: 'claude-opus-4-20250514',
+        model: 'claude-opus-4-8',
         max_tokens: 50,
         messages: [
           {"role": "user", "content": "Hello, world"}
@@ -1033,7 +1033,7 @@ class PopupController {
         data: {
           apiKey: apiKey,
           body: {
-            model: 'claude-opus-4-20250514',
+            model: 'claude-opus-4-8',
             max_tokens: 50,
             messages: [
               {"role": "user", "content": "Hello, world"}

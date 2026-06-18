@@ -909,7 +909,7 @@ class GitLabCodeReviewer {
     try {
       const settingsResult = await chrome.runtime.sendMessage({ action: 'getSettings' });
       settings = settingsResult.settings || {
-        model: 'claude-opus-4-20250514',
+        model: 'claude-opus-4-8',
         maxFiles: 10,
         includeTests: true,
         projectContext: {
@@ -925,7 +925,7 @@ class GitLabCodeReviewer {
     } catch (error) {
       console.warn('Failed to load settings, using defaults:', error);
       settings = {
-        model: 'claude-opus-4-20250514',
+        model: 'claude-opus-4-8',
         maxFiles: 10,
         includeTests: true,
         projectContext: {
@@ -1596,7 +1596,7 @@ class GitLabCodeReviewer {
     await this.runNetworkDiagnostics();
     
     const requestBody = {
-      model: this.settings.model || 'claude-opus-4-20250514',
+      model: this.settings.model || 'claude-opus-4-8',
       max_tokens: 4000,
       messages: [{
         role: 'user',
@@ -2742,7 +2742,7 @@ Make it sound natural and conversational while keeping the technical accuracy.`;
       const apiResponse = await chrome.runtime.sendMessage({
         action: 'callClaudeAPI',
         apiKey: result.apiKey,
-        model: this.settings?.model || 'claude-3-sonnet-20240229',
+        model: this.settings?.model || 'claude-opus-4-8',
         prompt: prompt,
         maxTokens: 1000
       });
@@ -2950,7 +2950,7 @@ Make it sound natural and conversational while keeping the technical accuracy.`;
       
       // Load settings for context and model configuration (always refresh)
       this.settings = settingsResult.settings || {
-        model: 'claude-opus-4-20250514',
+        model: 'claude-opus-4-8',
         maxFiles: 10,
         includeTests: true,
         projectContext: {
@@ -3032,7 +3032,7 @@ Make it sound natural and conversational while keeping the technical accuracy.`;
       
       // Load settings for context and model configuration (always refresh)
       this.settings = settingsResult.settings || {
-        model: 'claude-opus-4-20250514',
+        model: 'claude-opus-4-8',
         maxFiles: 10,
         includeTests: true,
         projectContext: {
@@ -3299,7 +3299,7 @@ Make it sound natural and conversational while keeping the technical accuracy.`;
       data: {
         apiKey: this.apiKey,
         body: {
-          model: this.settings.model || 'claude-opus-4-20250514',
+          model: this.settings.model || 'claude-opus-4-8',
           max_tokens: 4000,
           messages: [{
             role: 'user',
