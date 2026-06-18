@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>AI Code Reviewer</title>
+</head>
+<body class="ai-popup">
+  <div class="popup-container">
+    
+    <!-- Glassmorphism Header -->
+    <header class="popup-header">
+      <div class="header-bg"></div>
+      <div class="header-content">
+        <div class="logo">
+          <div class="logo-icon">
+            <img src="icons/icon48.png" alt="AI Code Reviewer" width="32" height="32">
+          </div>
+          <div class="logo-text">
+            <h1>AI Code Reviewer</h1>
+            <span class="tagline">Intelligent GitLab Analysis</span>
+          </div>
+        </div>
+        <div class="version-pill" id="version-display"></div>
+      </div>
+    </header>
+
+    <!-- Status Banner -->
+    <div id="status-banner" class="status-banner hidden"></div>
+
+    <!-- Main Content Area -->
+    <main class="popup-main">
+      
+      <!-- Setup View -->
+      <section id="setup-view" class="view setup-view">
+        <div class="view-content">
+          
+          <!-- Welcome Card -->
+          <div class="welcome-card">
+            <div class="welcome-icon">🚀</div>
+            <h2>Welcome to AI Code Review</h2>
+            <p>Connect your services to start intelligent code analysis</p>
+          </div>
+
+          <!-- Credentials Grid -->
+          <div class="credentials-grid">
+            
+            <!-- Claude API Card -->
+            <div class="credential-card claude-card">
+              <div class="card-header">
+                <div class="service-icon claude-icon">🧠</div>
+                <div class="service-info">
+                  <h3>Claude AI</h3>
+                  <span class="service-desc">Anthropic API</span>
+                </div>
+                <div class="connection-status" id="claude-status">
+                  <div class="status-dot"></div>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="input-field">
+                  <input type="password" id="api-key" placeholder="sk-ant-..." class="modern-input">
+                  <button type="button" id="toggle-api-key" class="input-action">
+                    <span class="action-icon">👁️</span>
+                  </button>
+                </div>
+                <div class="field-status" id="api-key-status"></div>
+              </div>
+            </div>
+
+            <!-- GitLab Card -->
+            <div class="credential-card gitlab-card">
+              <div class="card-header">
+                <div class="service-icon gitlab-icon">🦊</div>
+                <div class="service-info">
+                  <h3>GitLab</h3>
+                  <span class="service-desc">Personal Token</span>
+                </div>
+                <div class="connection-status" id="gitlab-status">
+                  <div class="status-dot"></div>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="input-field">
+                  <input type="password" id="gitlab-token" placeholder="glpat-..." class="modern-input">
+                  <button type="button" id="toggle-gitlab-token" class="input-action">
+                    <span class="action-icon">👁️</span>
+                  </button>
+                </div>
+                <div class="field-status" id="gitlab-token-status"></div>
+              </div>
+            </div>
+
+            <!-- GitLab URL Card -->
+            <div class="credential-card gitlab-url-card">
+              <div class="card-header">
+                <div class="service-icon gitlab-icon">🌐</div>
+                <div class="service-info">
+                  <h3>GitLab URL</h3>
+                  <span class="service-desc">Custom Instance</span>
+                </div>
+                <div class="connection-status" id="gitlab-url-status">
+                  <div class="status-dot"></div>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="input-field">
+                  <input type="url" id="gitlab-url" placeholder="https://gitlab.example.com" class="modern-input">
+                  <button type="button" id="reset-gitlab-url" class="input-action" title="Reset to default">
+                    <span class="action-icon">🔄</span>
+                  </button>
+                </div>
+                <div class="field-status" id="gitlab-url-field-status"></div>
+                <div class="field-hint">Leave empty to use gitlab.com</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="action-grid">
+            <button id="save-keys-btn" class="btn btn-primary">
+              <span class="btn-icon">💾</span>
+              <span class="btn-text">Save Credentials</span>
+            </button>
+            <button id="test-connection-btn" class="btn btn-secondary">
+              <span class="btn-icon">🔬</span>
+              <span class="btn-text">Test Connection</span>
+            </button>
+          </div>
+
+          <!-- Quick Settings Access -->
+          <div style="text-align: center; margin-top: 16px;">
+            <button id="setup-settings-btn" class="btn btn-secondary" style="width: auto;">
+              <span class="btn-icon">⚙️</span>
+              <span class="btn-text">Configure Project Context</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Dashboard View -->
+      <section id="dashboard-view" class="view dashboard-view hidden">
+        <div class="view-content">
+          
+          <!-- Status Card -->
+          <div class="status-card">
+            <div class="status-icon">✅</div>
+            <div class="status-info">
+              <h3>Ready for Review</h3>
+              <p>All systems connected and operational</p>
+            </div>
+          </div>
+
+          <!-- Primary Action -->
+          <div class="primary-action">
+            <button id="start-review-btn" class="btn btn-hero">
+              <span class="btn-icon">🚀</span>
+              <span class="btn-text">Start AI Review</span>
+              <div class="btn-shine"></div>
+            </button>
+          </div>
+
+          <!-- Quick Actions -->
+          <div class="quick-actions">
+            <button id="settings-btn" class="quick-btn">
+              <span class="quick-icon">⚙️</span>
+              <span class="quick-label">Settings</span>
+            </button>
+            <button id="manage-keys-btn" class="quick-btn">
+              <span class="quick-icon">🔑</span>
+              <span class="quick-label">Credentials</span>
+            </button>
+          </div>
+
+          <!-- Stop Action (only visible during review) -->
+          <div class="stop-action">
+            <button id="stop-review-btn" class="btn btn-danger hidden">
+              <span class="btn-icon">⏹️</span>
+              <span class="btn-text">Stop Review</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Settings View -->
+      <section id="settings-view" class="view settings-view hidden">
+        <div class="view-content">
+          
+          <!-- Settings Header -->
+          <div class="settings-header">
+            <button id="back-from-settings" class="back-btn">
+              <span class="back-icon">←</span>
+            </button>
+            <div class="settings-title">
+              <h2>Configuration</h2>
+              <p>Customize AI behavior and project context</p>
+            </div>
+          </div>
+
+          <!-- AI Configuration -->
+          <div class="config-section">
+            <div class="section-title">
+              <span class="section-icon">🧠</span>
+              <span class="section-text">AI Configuration</span>
+            </div>
+            <div class="config-grid">
+              <div class="config-item">
+                <label class="config-label">Model</label>
+                <input id="model-select" class="modern-select" list="model-options"
+                       placeholder="claude-opus-4-8" autocomplete="off" spellcheck="false" />
+                <datalist id="model-options">
+                  <option value="claude-opus-4-8">Claude Opus 4.8</option>
+                  <option value="claude-sonnet-4-6">Claude Sonnet 4.6</option>
+                  <option value="claude-haiku-4-5">Claude Haiku 4.5</option>
+                  <option value="claude-opus-4-7">Claude Opus 4.7</option>
+                  <option value="claude-fable-5">Claude Fable 5</option>
+                </datalist>
+              </div>
+              <div class="config-item">
+                <label class="config-label">Max Files</label>
+                <input type="number" id="max-files" min="1" max="20" class="modern-input" value="10">
+              </div>
+            </div>
+            <div class="config-toggle">
+              <label class="toggle-label">
+                <input type="checkbox" id="include-tests" class="modern-checkbox">
+                <span class="toggle-slider"></span>
+                <span class="toggle-text">Include test files</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Project Context -->
+          <div class="config-section">
+            <div class="section-title">
+              <span class="section-icon">🏗️</span>
+              <span class="section-text">Project Context</span>
+            </div>
+            <div class="config-item full-width">
+              <label class="config-label">Project Type</label>
+              <select id="project-type" class="modern-select">
+                <option value="">Select type...</option>
+                <optgroup label="Frontend - Angular">
+                  <option value="nx-monorepo">🏢 NX Monorepo</option>
+                  <option value="angular-app">📱 Angular App</option>
+                  <option value="angular-lib">📚 Angular Library</option>
+                  <option value="microfrontend">🧩 Micro Frontend</option>
+                </optgroup>
+                <optgroup label="Frontend - Other">
+                  <option value="react-app">⚛️ React App</option>
+                  <option value="vue-app">💚 Vue.js App</option>
+                  <option value="svelte-app">🧡 Svelte App</option>
+                  <option value="nextjs-app">▲ Next.js App</option>
+                  <option value="nuxt-app">💚 Nuxt.js App</option>
+                  <option value="vanilla-js">📝 Vanilla JavaScript</option>
+                </optgroup>
+                <optgroup label="Backend">
+                  <option value="nodejs-api">🟢 Node.js API</option>
+                  <option value="express-api">🚂 Express.js API</option>
+                  <option value="nestjs-api">🐱 NestJS API</option>
+                  <option value="spring-boot">☕ Spring Boot</option>
+                  <option value="dotnet-api">🔵 .NET API</option>
+                  <option value="python-api">🐍 Python API</option>
+                  <option value="fastapi">⚡ FastAPI</option>
+                  <option value="django-api">🎸 Django API</option>
+                  <option value="go-api">🐹 Go API</option>
+                  <option value="rust-api">🦀 Rust API</option>
+                </optgroup>
+                <optgroup label="Other">
+                  <option value="fullstack">🌐 Full Stack</option>
+                  <option value="mobile-app">📱 Mobile App</option>
+                  <option value="desktop-app">🖥️ Desktop App</option>
+                  <option value="other">🔧 Other</option>
+                </optgroup>
+              </select>
+            </div>
+            <div class="config-item full-width">
+              <label class="config-label">Additional Context</label>
+              <textarea id="custom-context" rows="3" placeholder="Describe your project architecture, patterns, or specific requirements..." class="modern-textarea"></textarea>
+            </div>
+          </div>
+
+          <!-- Context Configuration -->
+          <div class="config-section">
+            <div class="section-title">
+              <span class="section-icon">📝</span>
+              <span class="section-text">Context Configuration</span>
+            </div>
+            <div class="config-item full-width">
+              <label class="config-label">Project Information</label>
+              <textarea id="manual-project-info" rows="4" placeholder="Describe your project (e.g., this project is a monorepo using nx and angular 18...)" class="modern-textarea"></textarea>
+            </div>
+            <div class="config-item full-width">
+              <label class="config-label">Review Directions</label>
+              <textarea id="manual-directions" rows="3" placeholder="Special review instructions (e.g., always use best practices. No Summary in the comments.)" class="modern-textarea"></textarea>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Credentials Management View -->
+      <section id="credentials-view" class="view credentials-view hidden">
+        <div class="view-content">
+          
+          <!-- Credentials Header -->
+          <div class="credentials-header">
+            <button id="back-from-credentials" class="back-btn">
+              <span class="back-icon">←</span>
+            </button>
+            <div class="credentials-title">
+              <h2>Credential Management</h2>
+              <p>Secure API key management and testing</p>
+            </div>
+          </div>
+
+          <!-- Advanced Credential Cards -->
+          <div class="advanced-credentials">
+            
+            <!-- Claude Management -->
+            <div class="advanced-card claude-advanced">
+              <div class="advanced-header">
+                <div class="advanced-icon claude-icon">🧠</div>
+                <div class="advanced-info">
+                  <h3>Claude AI Configuration</h3>
+                  <p>Anthropic API credentials and testing</p>
+                </div>
+                <div class="connection-indicator" id="claude-indicator">
+                  <div class="indicator-dot"></div>
+                  <span class="indicator-text">Disconnected</span>
+                </div>
+              </div>
+              <div class="advanced-body">
+                <div class="input-field">
+                  <input type="password" id="api-key-manage" placeholder="sk-ant-..." class="modern-input">
+                  <button type="button" id="toggle-api-key-manage" class="input-action">
+                    <span class="action-icon">👁️</span>
+                  </button>
+                </div>
+                <div class="field-status" id="api-key-status-manage"></div>
+                <div class="advanced-actions">
+                  <button id="test-claude-btn" class="test-btn">
+                    <span class="test-icon">🧪</span>
+                    <span class="test-text">Test API</span>
+                  </button>
+                  <button id="debug-claude-btn" class="debug-btn">
+                    <span class="debug-icon">🔍</span>
+                    <span class="debug-text">Debug</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- GitLab Management -->
+            <div class="advanced-card gitlab-advanced">
+              <div class="advanced-header">
+                <div class="advanced-icon gitlab-icon">🦊</div>
+                <div class="advanced-info">
+                  <h3>GitLab Configuration</h3>
+                  <p>Personal access token management</p>
+                </div>
+                <div class="connection-indicator" id="gitlab-indicator">
+                  <div class="indicator-dot"></div>
+                  <span class="indicator-text">Disconnected</span>
+                </div>
+              </div>
+              <div class="advanced-body">
+                <div class="input-field">
+                  <input type="password" id="gitlab-token-manage" placeholder="glpat-..." class="modern-input">
+                  <button type="button" id="toggle-gitlab-token-manage" class="input-action">
+                    <span class="action-icon">👁️</span>
+                  </button>
+                </div>
+                <div class="field-status" id="gitlab-token-status-manage"></div>
+                
+                <div class="input-field" style="margin-top: 12px;">
+                  <input type="url" id="gitlab-url-manage" placeholder="https://gitlab.example.com" class="modern-input">
+                  <button type="button" id="reset-gitlab-url-manage" class="input-action" title="Reset to default">
+                    <span class="action-icon">🔄</span>
+                  </button>
+                </div>
+                <div class="field-status" id="gitlab-url-status-manage"></div>
+                <div class="field-hint">GitLab instance URL (leave empty for gitlab.com)</div>
+                
+                <div class="advanced-actions">
+                  <button id="test-gitlab-btn" class="test-btn">
+                    <span class="test-icon">🧪</span>
+                    <span class="test-text">Test Token</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Management Actions -->
+          <div class="management-actions">
+            <button id="save-credentials-btn" class="btn btn-primary">
+              <span class="btn-icon">💾</span>
+              <span class="btn-text">Save All</span>
+            </button>
+            <button id="clear-all-btn" class="btn btn-danger">
+              <span class="btn-icon">🗑️</span>
+              <span class="btn-text">Clear All</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Modern Footer -->
+    <footer class="popup-footer">
+      <div class="footer-info">
+        <span class="footer-version" id="version"></span>
+      </div>
+      <div class="footer-status">
+        <div class="status-indicators">
+          <div class="indicator claude-mini" title="Claude AI"></div>
+          <div class="indicator gitlab-mini" title="GitLab"></div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

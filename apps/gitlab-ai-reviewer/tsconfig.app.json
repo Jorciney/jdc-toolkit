@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/out-tsc",
+    "types": ["chrome"]
+  },
+  "files": ["src/main.ts"],
+  // Vendored extension entry files (background.js / content.js / popup.js) are
+  // intentionally excluded: they are verbatim plain JS bundled by webpack via
+  // custom-webpack.config.ts, not type-checked here.
+  "include": ["src/**/*.d.ts"],
+  "exclude": ["jest.config.ts", "src/**/*.test.ts", "src/**/*.spec.ts"]
+}

@@ -1,0 +1,90 @@
+{
+  "name": "gitlab-ai-reviewer",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "jdc-toolkit",
+  "sourceRoot": "apps/gitlab-ai-reviewer/src",
+  "tags": ["scope:app", "scope:chrome-extension"],
+  "targets": {
+    "build": {
+      "executor": "@angular-builders/custom-webpack:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/gitlab-ai-reviewer",
+        "index": "apps/gitlab-ai-reviewer/src/index.html",
+        "main": "apps/gitlab-ai-reviewer/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/gitlab-ai-reviewer/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/gitlab-ai-reviewer/src/manifest.json",
+          "apps/gitlab-ai-reviewer/src/popup.html",
+          "apps/gitlab-ai-reviewer/src/privacy_policy.html",
+          "apps/gitlab-ai-reviewer/src/styles.css",
+          "apps/gitlab-ai-reviewer/src/ai-reviewer.css",
+          "apps/gitlab-ai-reviewer/src/icons"
+        ],
+        "styles": [],
+        "scripts": [],
+        "customWebpackConfig": {
+          "path": "apps/gitlab-ai-reviewer/custom-webpack.config.ts"
+        },
+        "optimization": {
+          "styles": {
+            "inlineCritical": false
+          }
+        }
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "2mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "none"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true,
+          "outputHashing": "none"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "gitlab-ai-reviewer:build:production"
+        },
+        "development": {
+          "buildTarget": "gitlab-ai-reviewer:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/gitlab-ai-reviewer/jest.config.ts"
+      }
+    }
+  }
+}
